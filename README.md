@@ -46,7 +46,7 @@
 
 1. Clone the Repository: Start by cloning this repository to your local machine using Git. Open your terminal and run:
 
-   git clone <https://github.com/adarshdhital007/randomuserapi>
+   git clone <https://github.com/adarshdhital007/RandomUserViewer>
 
 2. Install Dependencies: Navigate to the project folder in your terminal and install the project's dependencies:
 
