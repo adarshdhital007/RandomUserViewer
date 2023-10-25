@@ -1,0 +1,62 @@
+<h1 class="text-white text-center mt-4">Welcome to the Random User Viewer</h1>
+<p class="text-white text-center">
+  Select and Explore a diverse list of users, refreshed every time when you refresh the page.
+</p>
+
+<div class="container mt-5 dark-mode">
+  <div class="form-group">
+    <label for="userDropdown">Select a User:</label>
+    <select id="userDropdown" class="form-control" [formControl]="userDropdown">
+      <option [ngValue]="null">
+        {{
+          users.length > 0
+            ? users[0].name.title +
+              " " +
+              users[0].name.first +
+              " " +
+              users[0].name.last
+            : "Select a user"
+        }}
+      </option>
+      <option *ngFor="let user of users" [ngValue]="user">
+        {{ user.name.title }} {{ user.name.first }} {{ user.name.last }}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf="selectedUser" class="user-profile card mt-2">
+    <div
+      class="user-picture card-img-top d-flex align-items-center justify-content-center"
+    >
+      <img
+        [src]="selectedUser.picture.large"
+        alt="User Picture"
+        class="photo img-thumbnail rounded-circle"
+      />
+    </div>
+    <div class="card-body user-details">
+      <h1 class="card-title">
+        {{ selectedUser.name.title }} {{ selectedUser.name.first }}
+        {{ selectedUser.name.last }}
+      </h1>
+      <div class="mb-2"><strong>Gender:</strong> {{ selectedUser.gender }}</div>
+      <div class="mb-2"><strong>Email:</strong> {{ selectedUser.email }}</div>
+      <div class="mb-2"><strong>Phone:</strong> {{ selectedUser.phone }}</div>
+      <div class="mb-2"><strong>Cell:</strong> {{ selectedUser.cell }}</div>
+      <div class="mb-2">
+        <strong>ID Name:</strong> {{ selectedUser.id.name }}
+      </div>
+      <div class="mb-2">
+        <strong>ID Value:</strong> {{ selectedUser.id.value }}
+      </div>
+      <div class="mb-2">
+        <strong>Date of Birth:</strong>
+        {{ selectedUser.dob.date | date : "MMMM d, y" }} (Age:
+        {{ selectedUser.dob.age }})
+      </div>
+      <div class="mb-2">
+        <strong>Nationality:</strong> {{ selectedUser.nat }}
+      </div>
+    </div>
+  </div>
+</div>
